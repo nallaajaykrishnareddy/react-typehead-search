@@ -2,21 +2,23 @@ import './App.css';
 import { useCallback, useMemo, useState, useRef } from 'react';
 
 const debounce = (callback, wait) => {
-  let timeoutId;
   let first = true;
+  let timer = null;
+
   return (...args) => {
     if (first) {
-      callback(...args);
-      first = false;
-    } else {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        callback(...args);
-      }, wait);
+      callback(...args)
+      first = false
+      return
     }
-  };
+
+    if (timer) {
+      clearTimeout(timer)
+    }
+   timer = setTimeout(()=>{
+      callback(...args)
+    },wait)
+  }
 };
 
 function App() {
@@ -67,7 +69,7 @@ function App() {
   }, []);
 
   const debouncedGetResultsFromApi = useMemo(
-    () => debounce(getResultsFromApi, 1000),
+    () => debounce(getResultsFromApi, 500),
     [getResultsFromApi]
   );
 
