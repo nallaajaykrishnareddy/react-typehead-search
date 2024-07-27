@@ -1,0 +1,24 @@
+.search {
+  height: 30px;
+  width: 300px;
+}
+
+ul {
+  list-style: none;
+  width: 309px;
+  left: 115px;
+  top: 45px;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  height: 30px;
+  background-color: rgb(179, 165, 165);
+  padding: 10px;
+}
+
+ul li:hover {
+  background-color: gray;
+}
